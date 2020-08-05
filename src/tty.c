@@ -22,17 +22,31 @@ void terminal_putentryat(char c, uint8_t color, size_t x, size_t y) {
 	terminal_buf[idx] = vga_entry(c, color);
 }
 
+void scroll() {
+	for (size_t x = 0; x < VGA_WIDTH; x++) {
+		for (size_t y = 1; y < VGA_HEIGHT; y++) {
+			const size_t idx = y * VGA_WIDTH + x;
+			// 1 line up = 80 characters back
+			terminal_buf[idx - 80] = terminal_buf[idx];
+			// Every line is duplicated one up, so clear the last line.
+			if (y == VGA_HEIGHT - 1) {
+				terminal_buf[idx] = vga_entry(' ', terminal_color);
+			}
+		}
+	}
+}
+
 void terminal_putchar(char c) {
 	if (c == '\n') {
 		terminal_col = 0;
 		if (++terminal_row == VGA_HEIGHT)
-			terminal_row = 0;
+			scroll();
 	} else {
 		terminal_putentryat(c, terminal_color, terminal_col, terminal_row);
 		if (++terminal_col == VGA_WIDTH) {
 			terminal_col = 0;
 			if (++terminal_row == VGA_HEIGHT)
-				terminal_row = 0;
+				scroll();
 		}
 	}
 }

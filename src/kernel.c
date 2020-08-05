@@ -15,9 +15,15 @@ size_t strlen(const char* str) {
 	return len;
 }
 
+void write(const char* str) {
+	terminal_write(str, strlen(str));
+}
+
 void kernel_main(void) {
 	terminal_initialize();
-	const char* str = "Hello, kernel!\nNewline test";
-	size_t len = strlen(str);
-	terminal_write(str, len);
+	for (size_t i = 0; i < 25; i++) {
+		write("Line ");
+		terminal_putchar((char) ((i % 10) + 48));
+		write("!\n");
+	}
 }
