@@ -1,2 +1,7 @@
 /bin
 /obj
+/sysroot
+*gcc*
+*binutils*
+libk.a
+*.libk.o

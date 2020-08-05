@@ -6,14 +6,9 @@
 #error "ix86-elf compiler is necessary!"
 #endif
 
-#include <tty.h>
+#include <string.h>
 
-size_t strlen(const char* str) {
-	size_t len = 0;
-	while (str[len])
-		len++;
-	return len;
-}
+#include <tty.h>
 
 void write(const char* str) {
 	terminal_write(str, strlen(str));
