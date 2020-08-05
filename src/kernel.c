@@ -17,7 +17,7 @@ size_t strlen(const char* str) {
 
 void kernel_main(void) {
 	terminal_initialize();
-	const char* str = "Hello, coomboy!\n";
+	const char* str = "Hello, kernel!\nNewline test";
 	size_t len = strlen(str);
 	terminal_write(str, len);
 }
