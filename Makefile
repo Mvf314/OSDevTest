@@ -5,7 +5,7 @@ AS=$(TARGET)-as
 
 QEMU=qemu-system-i386
 
-CFLAGS=-std=gnu99 -ffreestanding -O2 -Wall -Wextra
+CFLAGS=-std=gnu11 -ffreestanding -O2 -Wall -Wextra
 LD=-ffreestanding -O2 -Wall -Wextra
 LIBS=-nostdlib -lk -lgcc
 

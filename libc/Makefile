@@ -3,9 +3,9 @@ TARGET=i686-elf
 CC=$(TARGET)-gcc
 AR=$(TARGET)-ar
 
-CFLAGS=-std=gnu99 -O2 -g -ffreestanding -Wall -Wextra -Iinclude
+CFLAGS=-std=gnu11 -O2 -g -ffreestanding -Wall -Wextra -Iinclude
 
-LIBK_CFLAGS=$(CFLAGS)
+LIBK_CFLAGS=$(CFLAGS) -I.. -D__is_libk
 
 SYSROOT=../sysroot
 PREFIX=usr
@@ -15,7 +15,13 @@ LIBDIR=$(PREFIX)/lib
 BINS=libk.a
 
 FREE_OBJS=\
-string/strlen.o
+math/iabs.o		\
+math/ipow.o		\
+stdio/putchar.o		\
+stdio/printf.o		\
+stdlib/abort.o		\
+stdlib/atoi.o		\
+string/strlen.o		
 
 LIBK_OBJS=$(FREE_OBJS:.o=.libk.o)
 

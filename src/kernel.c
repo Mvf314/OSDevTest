@@ -6,7 +6,11 @@
 #error "ix86-elf compiler is necessary!"
 #endif
 
+#include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
+
+#include <assert.h>
 
 #include <tty.h>
 
@@ -16,9 +20,8 @@ void write(const char* str) {
 
 void kernel_main(void) {
 	terminal_initialize();
-	for (size_t i = 0; i < 25; i++) {
-		write("Line ");
-		terminal_putchar((char) ((i % 10) + 48));
-		write("!\n");
-	}
+
+	short int temp = 25 * 32;
+
+	printf("Yo, shit shows 25 * 32: %h\nCool, isnt it?", temp);
 }
