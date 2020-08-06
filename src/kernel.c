@@ -21,6 +21,8 @@ void write(const char* str) {
 void kernel_main(void) {
 	terminal_initialize();
 
+	assert(1+1==3);
+
 	short int temp = 25 * 32;
 
 	printf("Yo, shit shows 25 * 32: %h\nCool, isnt it?", temp);

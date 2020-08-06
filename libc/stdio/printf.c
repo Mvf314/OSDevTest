@@ -46,10 +46,16 @@ int printf(const char* restrict format, ...) {
 				written++;
 			} else {
 			int intg;
+			const char* str;
 				switch (format[i + 1]) {
 					case 'h':
 						intg = (int) va_arg(params, int);
 						written += printf(itostr(intg));
+						i++;
+						break;
+					case 's':
+						str = (const char*) va_arg(params, const char*);
+						written += printf(str);
 						i++;
 						break;
 					default:

@@ -8,7 +8,7 @@
 #ifdef NDEBUG
 #define assert(ignore) ((void)0)
 #else
-#define assert(expr) (void) printf((expr) ? "Assert success\n" : "Assert fail\n")
+#define assert(expr) (void) ((expr ? : printf("Assertion failed: %s, function %s, file %s, line %h\n", #expr, __func__, __FILE__, __LINE__)))
 #endif
 
 #endif
